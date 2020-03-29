@@ -1,0 +1,39 @@
+<?php
+class Controller {
+	function invoke(){
+		#echo "Has accedido bien";
+		#include "view/main_page.php";
+		#print_r ($_REQUEST);
+		
+		if (!isset($_REQUEST['option'])){
+			include "view/main_page.php";
+			print_r($_REQUEST);
+		}else{
+			switch($_REQUEST ['option']){
+			case "create_user":
+				include "controller/Controller_create_user.php";
+				$controller= new controller_create_user();
+				$controller->invoke();
+			break;
+			case "list_user":
+				include "controller/Controller_list_user.php";
+				$controller= new controller_list_user();
+				$controller->invoke();
+			break;
+			case "create_group":
+				include "controller/Controller_create_group.php";
+				$controller= new controller_create_group();
+				$controller->invoke();
+			break;
+			case "list_groups":
+				include "controller/Controller_list_groups.php";
+				$controller= new controller_list_groups();
+				$controller->invoke();
+			break;
+			}		
+		}
+		
+	}
+}
+
+?>
